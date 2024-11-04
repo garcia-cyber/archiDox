@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Archive</title>
+		
+		<!-- Favicon -->
+        {%include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="{{url_for('static',filename='assets/img/Adx.png')}}" width="40" height="40" alt="">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				
+				<!-- Header Search -->
+                <div class="page-search-box">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-append">
+						  	<button class="btn btn-outline-secondary" type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</div>
+                </div>
+				<!-- /Header Search -->
+				
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+				
+				<!-- Header Menu -->
+				<ul class="nav user-menu">
+				
+					<!-- Notifications -->
+					
+					<!-- /Notifications -->
+
+				
+				</ul>
+				<!-- /Header Menu -->
+				
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						
+						<a class="dropdown-item" href="{{url_for('deco')}}">deconnexion</a>
+					</div>
+				</div>
+				<!-- /Mobile Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div class="sidebar-menu">
+						<ul>
+							<li> 
+								<a href="{{url_for('admin')}}"><i class="la la-home"></i> <span>Accueil</span></a>
+							</li>
+						
+							<li> 
+								<a href="#">Starred</a>
+							</li>
+							<li> 
+								<a href="#">Sent Mail</a>
+							</li>
+							<li> 
+								<a href="#">Draft <span class="mail-count">(8)</span></a>
+							</li>
+							<li> 
+								<a href="#">Trash</a>
+							</li>
+							<li class="menu-title">Label <a href="#"><i class="fa fa-plus"></i></a></li>
+							<li> 
+								<a href="#"><i class="fa fa-circle text-success mail-label"></i> Work</a>
+							</li>
+							<li> 
+								<a href="#"><i class="fa fa-circle text-danger mail-label"></i> Office</a>
+							</li>
+							<li> 
+								<a href="#"><i class="fa fa-circle text-warning mail-label"></i> Personal</a>
+							</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">{{session['nom']}}</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{{url_for('admin')}}">Accueil</a></li>
+									<li class="breadcrumb-item active">Archive</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									{% with messages = get_flashed_messages()%}
+							{%if messages%}
+								{%for i in messages %}
+										<div class="alert alert-warning">{{i}}</div>
+								{%endfor%}
+							{%endif%}
+						{%endwith%}
+
+									<form method="post" action="" enctype="multipart/form-data">
+										
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" value="{{arc[2]}}" name="archive" class="form-control">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" value="{{arc[3]}}" name="ref" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" value="{{index}}" name="index" class="form-control">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" value="{{arc[9]}}" name="auteur" class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<select class="form-control" name="configuration">
+														{% for i in listeT %}
+														<option value="{{i[0 ]}}">{{i[1]}}</option>
+														{%endfor%}
+													</select>
+												</div>
+												
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" name="titre" value="{{arc[1]}}" class="form-control">
+												</div>
+												
+											</div>
+											
+										</div>
+										<div class="form-group">
+											<textarea rows="4" class="form-control summernote" name="notification" placeholder="Notifications(commentaire)"></textarea>
+										</div>
+										<div class="form-group mb-0">
+											<div class="text-center">
+												<button class="btn btn-primary"><span>Send</span> <i class="fa fa-send m-l-5"></i></button>
+												<!-- <button class="btn btn-success m-l-5" type="button"><span>Draft</span> <i class="fa fa-floppy-o m-l-5"></i></button>
+												<button class="btn btn-success m-l-5" type="button"><span>Delete</span> <i class="fa fa-trash-o m-l-5"></i></button> -->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+				<!-- /Page Content -->
+				
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        {% include '_query/js.html'%}
+		
+    </body>
+</html>

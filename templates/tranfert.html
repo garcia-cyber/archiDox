@@ -1,0 +1,363 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Transfert</title>
+		
+		<!-- Favicon -->
+        {%include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/admin" class="logo">
+						<img src="{{url_for('static',filename='assets/img/Adx.png')}}" width="40" height="40" alt="">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				
+				<!-- Header Search -->
+                <div class="page-search-box">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-append">
+						  	<button class="btn btn-outline-secondary" type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</div>
+                </div>
+				<!-- /Header Search -->
+				
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+				
+				<!-- Header Menu -->
+				<ul class="nav user-menu">
+				
+					<!-- Notifications -->
+					<li class="nav-item dropdown">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="topnav-dropdown-header">
+								<span class="notification-title">Notifications</span>
+								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+							</div>
+							<div class="noti-content">
+								<ul class="notification-list">
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media">
+												<span class="avatar">
+													<img alt="" src="assets/img/profiles/avatar-02.jpg">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
+													<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media">
+												<span class="avatar">
+													<img alt="" src="assets/img/profiles/avatar-03.jpg">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
+													<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media">
+												<span class="avatar">
+													<img alt="" src="assets/img/profiles/avatar-06.jpg">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
+													<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media">
+												<span class="avatar">
+													<img alt="" src="assets/img/profiles/avatar-17.jpg">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
+													<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media">
+												<span class="avatar">
+													<img alt="" src="assets/img/profiles/avatar-13.jpg">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
+													<p class="noti-time"><span class="notification-time">2 days ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="topnav-dropdown-footer">
+								<a href="activities.html">View all Notifications</a>
+							</div>
+						</div>
+					</li>
+					<!-- /Notifications -->
+
+					<li class="nav-item dropdown has-arrow main-drop">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt=""></span>
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="login.html">Logout</a>
+						</div>
+					</li>
+				</ul>
+				<!-- /Header Menu -->
+				
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="settings.html">Settings</a>
+						<a class="dropdown-item" href="{{url_for('deco')}}">deconnexion</a>
+					</div>
+				</div>
+				<!-- /Mobile Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div class="sidebar-menu">
+						<ul>
+							  <li class="menu-title"> 
+                    <span>Main</span>
+                </li>
+            
+                <li class="active"> 
+                    <a href="{{url_for('admin')}}"><i class="la la-dashboard"></i> <span>Dashboard </span></a>
+                </li>
+           
+             {% if userL %}
+                <li> 
+                    <a href="{{url_for('users')}}"><i class="la la-user-plus"></i> <span>Gestion Utilisateur</span></a>
+                </li> 
+             {%endif%}   
+             {% if read %}
+             <li> 
+                <a href="{{url_for('ecrire')}}" ><i class="la la-edit"></i> <span>Nouveau document</span></a>
+            </li>
+            {% endif %} 
+            {% if lectureUser%}
+            <li> 
+                <a href="{{url_for('lecture')}}" ><i class="fa fa-envelope "></i> <span>Boite de reception</span></a>
+            </li> 
+            {%endif%}
+
+            {% if archiveU%}
+
+             <li> 
+                <a href="{{url_for('lecture')}}" ><i class="fa fa-archive "></i> <span>Archivage Interne</span></a>
+            </li> 
+            {%endif%}
+
+
+             {% if externeU %}
+
+             <li> 
+                <a href="{{url_for('archiveEx')}}" ><i class="fa fas fa-cog fa-spin "></i> <span>Archivage Externe</span></a>
+            </li> 
+            {%endif%}
+
+            
+             
+            
+                {%if typeU %}
+              <li> 
+                    <a href="{{url_for('type')}}" ><i class="la la-cog"></i> <span>Ajouter Type Document</span></a>
+                </li>
+                {%endif%}
+
+            {% if listeAU%}
+             <li> 
+                <a href="{{url_for('listeAr')}}" ><i class="fa fas fa-spinner fa-spin"></i> <span>Archives</span></a>
+            </li> 
+            {%endif%}
+
+
+            <li class="submenu">
+                <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
+                <ul style="display: none;">
+                    <li><a href="{{url_for('login')}}"> Login </a></li>
+                    <!-- <li><a href="register.html"> Register </a></li> -->
+                    <li><a href="{{url_for('modify')}}"> change password </a></li>
+                    <!-- <li><a href="otp.html"> OTP </a></li>
+                    <li><a href="lock-screen.html"> Lock Screen </a></li> -->
+                    <li><a href="{{url_for('deco')}}"> Deconnexion </a></li>
+                </ul>
+            </li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">{{session['nom']}}</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{{url_for('admin')}}">Accueil</a></li>
+									<li class="breadcrumb-item active">Transfert du document</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									{% with messages = get_flashed_messages()%}
+							{%if messages%}
+								{%for i in messages %}
+										<div class="alert alert-warning">{{i}}</div>
+								{%endfor%}
+							{%endif%}
+						{%endwith%}
+
+									<form method="post" action="" >
+										
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>Objet document</label>
+													<input type="text"  value="{{call[1]}}"  name="sujet" class="form-control">
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label>auteur</label>
+													<input type="text"  value="{{call[7]}}"  name="auteur" class="form-control">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label>document attacher</label>
+											<input type="text" value="{{call[2]}}"  name="document" class="form-control">
+										</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+													<div class="form-group">
+												<label>Destinataire</label>
+														<select class="form-control" name="liste">
+														{% for i in use %}
+														<option value="{{i[0]}}">{{i[1]}}</option>
+														{%endfor%}
+													</select>
+									
+
+												</div>
+
+
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Numero A/R</label>
+													<input type="text"  value="{{call[4]}}"  name="ref" class="form-control">
+												</div>
+
+											</div>
+
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>reference</label>
+													<input type="text" value="{{call[3]}}"  name="refM" class="form-control">
+												</div>
+
+											</div>
+										</div>
+
+										
+										<div class="form-group">
+											<textarea rows="4" class="form-control summernote" name="com" placeholder="Observation"></textarea>
+										</div>  
+									
+										<div class="form-group mb-0">
+											<div class="text-center">
+												<button class="btn btn-primary"><span>Send</span> <i class="fa fa-send m-l-5"></i></button>
+												<!-- <button class="btn btn-success m-l-5" type="button"><span>Draft</span> <i class="fa fa-floppy-o m-l-5"></i></button>
+												<button class="btn btn-success m-l-5" type="button"><span>Delete</span> <i class="fa fa-trash-o m-l-5"></i></button> -->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+				<!-- /Page Content -->
+				
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        {% include '_query/js.html'%}
+		
+    </body>
+</html>

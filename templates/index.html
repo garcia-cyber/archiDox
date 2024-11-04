@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Home</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static',filename='assets/img/Adx.png')}}">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/font-awesome.min.css')}}">
+		
+		<!-- Lineawesome CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/line-awesome.min.css')}}">
+
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='assets/css/select2.min.css')}}">
+
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-datetimepicker.min.css')}}">
+		
+		<!-- Calendar CSS -->
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/fullcalendar.min.css')}}">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+    </head>
+	
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            {% include '_query/header.html'%} 
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			{% include '_query/sidebar.html'%}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<h1 class="text-uppercase">Administration</h1>
+							<div class="col-sm-12 db-header">
+
+								<h3 class="page-title">{{session['nom']}}</h3>
+								<select class="select">
+									<option>This Month</option>
+									<option>This Year</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+				
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+							<div class="card dash-widget bg-one">
+								{% if extA <= 1%}
+								<div class="card-body">
+									<h4>Archivage Externe</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{extA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-up"></i>
+										</div>
+									</div>
+									
+								</div>
+								{%else%}
+								<div class="card-body">
+									<h4>Archivages Externes</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{extA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-up"></i>
+										</div>
+									</div>
+									
+								</div>
+								{%endif%}
+
+
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+							<div class="card dash-widget bg-two">
+								<div class="card-body">
+									{% if ariA <= 1 %}
+									<h4>Archive Interne</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{ariA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-down"></i>
+										</div>
+									</div>
+									{%else%}
+									<h4>Archives Internes</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{ariA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-down"></i>
+										</div>
+									</div>
+
+									{%endif%}
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+							<div class="card dash-widget bg-three">
+								<div class="card-body">
+									{%if ttA <= 1 %}
+									<h4>Totale Archive</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{ttA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-up"></i>
+										</div>
+									</div>
+									{%else%}
+									<h4>Totale Archives</h4>
+									<div class="db-ico">
+										<div class="db-left">										
+											<h2>
+												{{ttA}}
+												
+											</h2>
+										</div>
+										<div class="db-right">
+											<i class="la la-arrow-up"></i>
+										</div>
+									</div>
+									{%endif%}									
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+							<div class="card dash-widget bg-four">
+								<div class="card-body">
+									<ul>
+										<li>
+											<h3>Archives</h3>
+											<h1>{{ttA}}</h1>
+										</li>
+										<li class="hr"></li>
+										<li>
+											<h3>Externe</h3>
+											<h1>{{extA}}</h1>
+										</li>
+										<li class="hr"></li>
+										<li>
+											<h3>Interne</h3>
+											<h1>{{ariA}}</h1>
+										</li>
+										
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-lg-9">
+							<div class="row d-flex">
+								<div class="col-md-6 text-center d-flex">
+									<div class="card chart-box flex-fill">
+										<div class="card-header">
+											<h3 class="card-title">Statistique document</h3>
+										</div>
+										<div class="card-body">											
+											<div id="bar-charts"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 text-center d-flex">
+									<div class="card chart-box flex-fill">
+										<div class="card-header">
+											<h3 class="card-title">Evaluation progress</h3>
+											<div class="dropdown">
+												<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<i class="fa fa-ellipsis-h"></i>
+												</button>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<a class="dropdown-item" href="#">Action</a>
+													<a class="dropdown-item" href="#">Another</a>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">											
+											<div id="evaluation-charts"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 text-center d-flex">
+									<div class="card chart-box flex-fill">
+										<div class="card-header">
+											<h3 class="card-title">Employee Composition</h3>
+											<div class="dropdown">
+												<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<i class="fa fa-ellipsis-h"></i>
+												</button>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+													<a class="dropdown-item" href="#">Action</a>
+													<a class="dropdown-item" href="#">Another</a>
+												</div>
+											</div>
+										</div>
+										<div class="card-body d-flex align-items-center">
+											<div id="employee-chart"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 text-center d-flex">
+									<div class="card chart-box flex-fill">
+										<div class="card-body">											
+											<!-- Calendar -->
+											<div id="calendar"></div>
+											<!-- /Calendar -->
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="card card-table mb-0">
+										<div class="card-header">
+											<h3 class="card-title mb-0">Liste des Performances </h3>
+											<select class="select">
+												<option>By Employee</option>
+												<option>By Customer</option>
+											</select>
+										</div>
+										<div class="card-body">
+											<div class="table-responsive">	
+												<table class="table custom-table table-nowrap mb-0">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th>Employee Name</th>
+															<th>Age</th>
+															<th>Department</th>
+															<th>Project</th>
+															<th>Discipline</th>
+															<th>Total Score</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>A12</td>
+															<td>John Deo</td>
+															<td>22</td>
+															<td>Marketing</td>
+															<td>27</td>
+															<td>100%</td>
+															<td>9.5</td>
+														</tr>
+														<tr>
+															<td>A12</td>
+															<td>Bobby</td>
+															<td>25</td>
+															<td>HR</td>
+															<td>10</td>
+															<td>95%</td>
+															<td>9.0</td>
+														</tr>
+														<tr>
+															<td>A12</td>
+															<td>Saami Al</td>
+															<td>23</td>
+															<td>Finance</td>
+															<td>13</td>
+															<td>90%</td>
+															<td>8.5</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-lg-3">
+							<div class="media event-media">
+								<img src="assets/img/profiles/avatar-01.jpg" class="mr-3" alt="User" />
+								<div class="media-body">
+									<h4>TODAY EVENT</h4>
+									<h5>John’s BirthDay</h5>
+								</div>
+							</div>
+							<div class="absent-emp">
+								<h3>Agent Absent </h3>
+								<div class="media">
+									<img src="{{url_for('static',filename='assets/img/profiles/avatar-02.jpg')}}" class="mr-3" alt="User" />
+									<div class="media-body">
+										<h4>Bobby</h4>
+										<h5>Medical Leave</h5>
+									</div>
+								</div>
+								<div class="media">
+									<img src="{{url_for('static',filename='assets/img/profiles/avatar-03.jpg')}}" class="mr-3" alt="User" />
+									<div class="media-body">
+										<h4>Yoga</h4>
+										<h5>Family Matter</h5>
+									</div>
+								</div>
+								<div class="media">
+									<img src="{{url_for('static',filename='assets/img/profiles/avatar-03.jpg')}}" class="mr-3" alt="User" />
+									<div class="media-body">
+										<h4>Smith Pindo</h4>
+										<h5>Medical Leave</h5>
+									</div>
+								</div>
+								<div class="media">
+									<img src="{{url_for('static',filename='assets/img/profiles/avatar-05.jpg')}}" class="mr-3" alt="User" />
+									<div class="media-body">
+										<h4>Kelen</h4>
+										<h5>Vacation</h5>
+									</div>
+								</div>
+								<div class="media">
+									<img src="{{url_for('static',filename='assets/img/profiles/avatar-02.jpg')}}" class="mr-3" alt="User" />
+									<div class="media-body">
+										<h4>Bobby</h4>
+										<h5>Medical Leave</h5>
+									</div>
+								</div>
+							</div>
+
+							<div class="job-app jb-bg-one">
+								<div class="jb-txt">
+									<h5>Dossier cloture</h5>
+									<h4>84 <span>/336</span></h4>
+								</div>
+
+								<div class="prog-div">
+									<div class="progress org"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+										<div class="progress-value">25%</div>
+									</div>
+								</div>								
+							</div>
+
+							<div class="job-app jb-bg-two">
+								<div class="jb-txt">
+									<h5>Dossier en cours</h5>
+									<h4>252<span>/336</span></h4>
+								</div>
+
+								<div class="prog-div">
+									<div class="progress org"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+										<div class="progress-value">75%</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				<!-- /Page Content -->
+
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="{{url_for('static',filename='assets/js/jquery-3.6.0.min.js')}}"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{{url_for('static',filename='assets/js/bootstrap.bundle.min.js')}}"></script>
+		
+		<!-- Slimscroll JS -->
+		<script src="{{url_for('static',filename='assets/js/jquery.slimscroll.min.js')}}"></script>
+		
+		<!-- Chart JS -->
+		<script src="{{url_for('static',filename='assets/plugins/apexcharts/apexcharts.min.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/chart.js')}}"></script>
+
+		<!-- Select2 JS -->
+		<script src="{{url_for('static',filename='assets/js/select2.min.js')}}"></script>
+
+		<!-- Datetimepicker JS -->
+		<script src="{{url_for('static',filename='assets/js/moment.min.js')}}"></script>
+		<script src="{{url_for('static',filename='assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+		
+		<!-- Calendar JS -->
+		<script src="{{url_for('static',filename='assets/js/jquery-ui.min.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/js/fullcalendar.min.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/js/jquery.fullcalendar.js')}}"></script>		
+		
+		<!-- Custom JS -->
+		<script src="{{url_for('static',filename='assets/js/app.js')}}"></script>
+		
+    </body>
+</html>

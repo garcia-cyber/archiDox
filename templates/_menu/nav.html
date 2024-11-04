@@ -1,0 +1,71 @@
+<div class="main-sidebar sidebar-style-2">
+    <aside id="sidebar-wrapper">
+      <div class="sidebar-brand">
+        <a href="/admin"> <img alt="image" src="{{url_for('static',filename='assets/img/Adx.png')}}" class="header-logo" /> <span
+            class="logo-name"></span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="menu-header"></li>
+        <li class="dropdown active">
+          <a href="{{url_for('admin')}}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        </li>
+          {% if userL %}
+                <li> 
+                    <a href="{{url_for('users')}}"><i class="fa fa-user-plus"></i> <span>Users</span></a>
+                </li> 
+             {%endif%}   
+             {% if read %}
+             <li> 
+                <a href="{{url_for('ecrire')}}" target="_blank"><i class="fa fa-pencil-alt"></i> <span>Nouveau document</span></a>
+            </li>
+            {% endif %} 
+            {% if lectureUser%}
+            <li> 
+                <a href="{{url_for('lecture')}}" target="_blank"><i class="fa fa-envelope "></i> <span>Boite de reception</span></a>
+            </li> 
+            {%endif%}
+
+            {% if archiveU%}
+
+             <li> 
+                <a href="{{url_for('lecture')}}" target="_blank"><i class="fa fa-archive "></i> <span>Archivage</span></a>
+            </li> 
+            {%endif%}
+
+
+             {% if externeU %}
+
+             <li> 
+                <a href="{{url_for('archiveEx')}}" target="_blank"><i class="fa fas fa-cog fa-spin "></i> <span>Archivage externe</span></a>
+            </li> 
+            {%endif%}
+
+            
+             
+            
+                {%if typeU %}
+              <li> 
+                    <a href="{{url_for('type')}}" target="_blank"><i class="fa fa-cog"></i> <span>Type d'archive</span></a>
+                </li>
+                {%endif%}
+
+            {% if listeAU%}
+             <li> 
+                <a href="{{url_for('listeAr')}}" target="_blank"><i class="fa fas fa-spinner fa-spin"></i> <span>Liste Archivage</span></a>
+            </li> 
+            {%endif%}
+     
+         <li class="dropdown">
+          <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{url_for('login')}}">Login</a></li>
+            <li><a class="nav-link" href="{{url_for('deco')}}">Deconnexion</a></li>
+          
+            
+          </ul>
+        </li>
+       
+       </ul>
+    </aside>
+  </div>

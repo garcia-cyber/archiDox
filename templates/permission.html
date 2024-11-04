@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Attribuer Role Utilisateur</title>
+		
+		<!-- Favicon -->
+       {%include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+          {%include '_query/header.html'%}
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+          {%include '_query/sidebar.html'%}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+						
+							<!-- Page Header -->
+							<div class="page-header">
+								<div class="row">
+									
+									<div class="col-sm-12">
+										
+										{% with messages = get_flashed_messages()%}
+										{%if messages%}
+											{%for i in messages %}
+												<div class="alert alert-warning">{{i}}</div>
+											{%endfor%}
+										{%endif%}
+									{%endwith%}
+									
+										<h3 class="page-title">Attribuer Role Utilisateur</h3>
+									</div>
+								</div>
+							</div>
+							<!-- /Page Header -->
+							
+							<form class="" method="post" action="">
+								<div class="form-group">
+									
+									<input type="hidden" name="id" class="form-control" value="{{data[0]}}">
+								</div>
+
+								<div class="form-group">
+									<label>Utilisateur</label>
+									<input type="text" disabled class="form-control" value="{{data[1]}}">
+								</div>
+
+								<div class="form-group">
+									<label>Role(s)</label>
+
+									<select name='choix' id="" class="form-control">
+										{%for i in aff %}
+											<option value="{{i[0]}}">{{i[1]}}</option>
+										{%endfor%}
+									</select>
+									
+								</div>
+								
+								<div class="submit-section">
+									<button class="btn btn-secondary submit-btn">Attribuer</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- /Page Content -->
+				
+			</div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+       {% include '_query/js.html'%}
+
+    </body>
+</html>

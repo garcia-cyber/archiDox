@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Mail view</title>
+		
+		<!-- Favicon -->
+        {% include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="{{url_for('static',filename='assets/img/Adx.png')}}" width="40" height="40" alt="">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				
+				<!-- Header Search -->
+                <div class="page-search-box">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-append">
+						  	<button class="btn btn-outline-secondary" type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</div>
+                </div>
+				<!-- /Header Search -->
+				
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+				
+				<!-- Header Menu -->
+			
+				<!-- /Header Menu -->
+				
+				<!-- Mobile Menu -->
+				
+				<!-- /Mobile Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div class="sidebar-menu">
+						<ul>
+							 <li class="menu-title"> 
+                    <span>Main</span>
+                </li>
+            
+                <li class="active"> 
+                    <a href="{{url_for('admin')}}"><i class="la la-dashboard"></i> <span>Dashboard </span></a>
+                </li>
+           
+             {% if userL %}
+                <li> 
+                    <a href="{{url_for('users')}}"><i class="la la-user-plus"></i> <span>Gestion Utilisateur</span></a>
+                </li> 
+             {%endif%}   
+             {% if read %}
+             <li> 
+                <a href="{{url_for('ecrire')}}" ><i class="la la-edit"></i> <span>Nouveau document</span></a>
+            </li>
+            {% endif %} 
+            {% if lectureUser%}
+            <li> 
+                <a href="{{url_for('lecture')}}" ><i class="fa fa-envelope "></i> <span>Boite de reception</span></a>
+            </li> 
+            {%endif%}
+
+            {% if archiveU%}
+
+             <li> 
+                <a href="{{url_for('lecture')}}" ><i class="fa fa-archive "></i> <span>Archivage Interne</span></a>
+            </li> 
+            {%endif%}
+
+
+             {% if externeU %}
+
+             <li> 
+                <a href="{{url_for('archiveEx')}}" ><i class="fa fas fa-cog fa-spin "></i> <span>Archivage Externe</span></a>
+            </li> 
+            {%endif%}
+
+            
+             
+            
+                {%if typeU %}
+              <li> 
+                    <a href="{{url_for('type')}}" ><i class="la la-cog"></i> <span>Ajouter Type Document</span></a>
+                </li>
+                {%endif%}
+
+            {% if listeAU%}
+             <li> 
+                <a href="{{url_for('listeAr')}}" ><i class="fa fas fa-spinner fa-spin"></i> <span>Archives</span></a>
+            </li> 
+            {%endif%}
+
+
+            <li class="submenu">
+                <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
+                <ul style="display: none;">
+                    <li><a href="{{url_for('login')}}"> Login </a></li>
+                    <!-- <li><a href="register.html"> Register </a></li> -->
+                    <li><a href="{{url_for('modify')}}"> change password </a></li>
+                    <!-- <li><a href="otp.html"> OTP </a></li>
+                    <li><a href="lock-screen.html"> Lock Screen </a></li> -->
+                    <li><a href="{{url_for('deco')}}"> Deconnexion </a></li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">View Message</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{{url_for('admin')}}">Accueil</a></li>
+									<li class="breadcrumb-item active">View Message</li>
+								</ul>
+							</div>
+
+							<!-- <div class="col-auto float-right ml-auto">
+								<a href="compose.html" class="btn add-btn"><i class="fa fa-plus"></i> Compose</a>
+							</div> -->
+							
+						</div>
+					</div>
+					<!-- /Page Header -->
+			
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card mb-0">
+								<div class="card-body">
+									<div class="mailview-content">
+										<div class="mailview-header">
+											<div class="row">
+												<div class="col-sm-9">
+													<div class="text-ellipsis m-b-10">
+														<span class="mail-view-title">{{aff[1]}}</span>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="mail-view-action">
+														
+														{%if documentU %}
+														<a href="/delete_doc/{{aff[0]}}" type="button" class="btn btn-white btn-sm"  title="supprimer"> <i class="fa fa-trash-o"></i></a>
+														{%endif%}
+
+														<a href="/trans/{{aff[0]}}" type="button" class="btn btn-white btn-sm"  title="transfert"> <i class="fa fa-plus"></i></a>
+
+														{% if archiveU %}
+														<a href="/archive/{{aff[0]}}" type="button" class="btn btn-white btn-sm"  title="archive"> <i class="fa fa-archive"></i></a>
+														{% endif %}
+													</div>
+												</div>
+											</div>
+											<div class="sender-info">
+												<div class="sender-img">
+													<img width="40" alt="" src="assets/img/profiles/avatar-02.jpg" class="rounded-circle">
+												</div>
+												<div class="receiver-details float-left">
+													<span class="sender-name">Auteur      : {{aff[10]}}</span>
+													<span class="sender-name">Titre       : {{aff[1]}}</span>
+													<span class="sender-name">Oriante par : {{aff[9]}}</span>
+													
+													<!-- <span class="receiver-name">
+														to
+														<span>me</span>, <span>Richard</span>, <span>Paul</span>
+													</span>	 -->
+												</div>	
+												<div class="receiver-details float-left">
+													
+													<!-- <span class="receiver-name">
+														to
+														<span>me</span>, <span>Richard</span>, <span>Paul</span>
+													</span>	 -->
+												</div>
+												<div class="mail-sent-time">
+													<span class="mail-time text-capitalize">{{aff[5]}} {{aff[6]}}</span>
+												</div>
+
+												<div class="clearfix"></div>
+											</div>
+										</div>
+										<div class="mailview-inner">
+											<p>{{aff[3]}}</p>
+											<p>
+												{{aff[4]}}
+											</p>
+										</div>
+									</div>
+									<div class="mail-attachments">
+										<p>  <a href="/static/documents/{{aff[2]}}" target="_blank">Download all</a></p>
+										<ul class="attachments clearfix">
+											<li>
+												<div class="attach-file"><i class="fa fa-file-pdf-o"></i></div>
+												<div class="attach-info"> <a href="/static/documents/{{aff[2]}}" class="attach-filename">{{aff[2]}}</a> 
+											</li>
+											
+										</ul>
+									</div>
+									<div class="mailview-footer">
+									
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+				<!-- /Page Content -->
+				
+			</div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+        {% include '_query/js.html'%}
+
+    </body>
+</html>

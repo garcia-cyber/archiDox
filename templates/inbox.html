@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Boite de reception</title>
+		
+		<!-- Favicon -->
+        {% include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            {% include '_query/header.html'%} 
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			{% include '_query/sidebar.html'%}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title text-center">Boite de reception</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{{url_for('admin')}}">Accueil</a></li>
+									<li class="breadcrumb-item active">Boite de reception</li>
+								</ul>
+							</div>
+							
+							<div class="col-auto float-right ml-auto">
+								{% if read %}
+								<a href="{{url_for('ecrire')}}" class="btn add-btn"><i class="fa fa-plus"></i> Compose</a>
+								{%endif%}
+							</div>
+							
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card mb-0">
+								<div class="card-body">
+									<div class="email-header">
+										<div class="row">
+											<div class="col top-action-left">
+												<div class="float-left">
+													<div class="btn-group dropdown-action">
+														<button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">Select <i class="fa fa-angle-down "></i></button>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="#">All</a>
+															<a class="dropdown-item" href="#">None</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">Read</a>
+															<a class="dropdown-item" href="#">Unread</a>
+														</div>
+													</div>
+													<div class="btn-group dropdown-action">
+														<button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">Actions <i class="fa fa-angle-down "></i></button>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="#">Reply</a>
+															<a class="dropdown-item" href="#">Forward</a>
+															<a class="dropdown-item" href="#">Archive</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">Mark As Read</a>
+															<a class="dropdown-item" href="#">Mark As Unread</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">Delete</a>
+														</div>
+													</div>
+													<div class="btn-group dropdown-action">
+														<button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><i class="fa fa-folder"></i> <i class="fa fa-angle-down"></i></button>
+														<div role="menu" class="dropdown-menu">
+															<a class="dropdown-item" href="#">Social</a>
+															<a class="dropdown-item" href="#">Forums</a>
+															<a class="dropdown-item" href="#">Updates</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">Spam</a>
+															<a class="dropdown-item" href="#">Trash</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">New</a>
+														</div>
+													</div>
+													<div class="btn-group dropdown-action">
+														<button type="button" data-toggle="dropdown" class="btn btn-white dropdown-toggle"><i class="fa fa-tags"></i> <i class="fa fa-angle-down"></i></button>
+														<div role="menu" class="dropdown-menu">
+															<a class="dropdown-item" href="#">Work</a>
+															<a class="dropdown-item" href="#">Family</a>
+															<a class="dropdown-item" href="#">Social</a>
+															<div class="dropdown-divider"></div> 
+															<a class="dropdown-item" href="#">Primary</a>
+															<a class="dropdown-item" href="#">Promotions</a>
+															<a class="dropdown-item" href="#">Forums</a>
+														</div>
+													</div>
+												</div>
+												<div class="float-left d-none d-sm-block">
+													<input type="text" placeholder="Search Messages" class="form-control search-message">
+												</div>
+											</div>
+											<div class="col-auto top-action-right">
+												<div class="text-right">
+													<button type="button" title="Refresh" data-toggle="tooltip" class="btn btn-white d-none d-md-inline-block"><i class="fa fa-refresh"></i></button>
+													<div class="btn-group">
+														<a class="btn btn-white"><i class="fa fa-angle-left"></i></a>
+														<a class="btn btn-white"><i class="fa fa-angle-right"></i></a>
+													</div>
+												</div>
+												<div class="text-right">
+													<span class="text-muted d-none d-md-inline-block">Showing 10 of 112 </span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="email-content">
+										<div class="table-responsive">
+											<table class="table table-inbox table-hover">
+												<thead>
+													<tr class="text-capitalize">
+														<th>id</th>
+														<!-- <th >
+															nature document
+														</th> -->
+														<th>Oriente par</th>
+														<th>Auteur</th>
+														<th>objet document</th>
+														<th>nature du document</th>
+														<th>Date </th>
+													</tr>
+												</thead>
+												<tbody>
+													{% for i in d %}
+													<tr class="unread clickable-row" data-href="/view/{{i[0]}}">
+														<!--td>
+															<input type="checkbox" class="checkmail">
+														</td-->
+														
+														<!-- <td class="name">{{i[10].capitalize()}}</td> -->
+														 <td>{{i[0]}}</td>
+														<td class="name">{{i[10]}}</td>
+														<td>{{i[11]}}</td>
+														<td class="subject">{{i[1]}}</td>
+														<td class="subject">{{i[8]}}</td>
+														<td class="mail-date">{{i[9]}}</td>
+													</tr>
+													{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+                </div>
+				<!-- /Page Content -->
+				
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+      {%include '_query/js.html'%}
+
+    </body>
+</html>

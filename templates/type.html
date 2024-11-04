@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="HR - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Type Archive</title>
+		
+		<!-- Favicon -->
+       {%include '_query/style.html'%}
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+          {%include '_query/header.html'%}
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+          {%include '_query/sidebar.html'%}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+						
+							<!-- Page Header -->
+							<div class="page-header">
+								<div class="row">
+									
+									<div class="col-sm-12">
+										
+										{% with messages = get_flashed_messages()%}
+										{%if messages%}
+											{%for i in messages %}
+												<div class="alert alert-warning">{{i}}</div>
+											{%endfor%}
+										{%endif%}
+									{%endwith%}
+									
+										<h3 class="page-title">Creer type de document et definire sa duree </h3>
+									</div>
+								</div>
+							</div>
+							<!-- /Page Header -->
+							
+							<form class="" method="post" action="{{url_for('type')}}">
+								<div class="form-group">
+									<label>Type de document a archiver</label>
+									<input type="text" name="typeA" class="form-control" placeholder="Entrez le Type de document a archiver" required>
+								</div>
+
+								<div class="form-group">
+									<label>Duree</label>
+									<input type="text" required name="dure" class="form-control" placeholder="Entrez la duree">
+								</div>
+
+								<div class="form-group">
+									<label>Unite de temps </label>
+									<select name="choix" class="form-control">
+										<option value="jour">Jour(s)</option>
+										<option value="mois">Mois</option>
+										
+										<option value="annee">Annee</option>
+									</select>
+								</div>
+
+								
+								<div class="submit-section">
+									<button class="btn btn-dark submit-btn">Creer</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- /Page Content -->
+				
+			</div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+       {% include '_query/js.html'%}
+
+    </body>
+</html>
