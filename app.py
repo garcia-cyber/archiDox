@@ -1120,7 +1120,7 @@ def listeAr():
             id = session['id']
             user = sql.cursor()
             user.execute("select * from roles where userId = ? and permissionId = 8 ",[id])
-            userL = user.fetchall()
+            userL = user.fetchall() 
 
             ecrit = sql.cursor()
             ecrit.execute("select * from roles where userId = ? and permissionId = 2 ",[id])
