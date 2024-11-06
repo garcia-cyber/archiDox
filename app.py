@@ -149,13 +149,19 @@ def admin():
             ari.execute("select * from archives where natureA = 'interne' ")
             ariA = ari.fetchall()
 
+            #nombre utilisateurs
+            userN = sql.cursor()
+            userN.execute("select * from users")
+            userNr = userN.fetchall() 
+            
+
             #Totale archives 
             tt = sql.cursor()
             tt.execute('select * from archives')
             ttA = tt.fetchall()
 
 
-            return render_template('index.html',ttA = tt.rowcount,ariA = ari.rowcount ,extA = ext.rowcount ,a = session['okay'] , listeAU = listeAU ,userL = userL , lectureUser = lectureUser ,externeU = externeU, read = read,archiveU = archiveU , typeU = typeU)
+            return render_template('index.html',userNr = userN.rowcount ,ttA = tt.rowcount,ariA = ari.rowcount ,extA = ext.rowcount ,a = session['okay'] , listeAU = listeAU ,userL = userL , lectureUser = lectureUser ,externeU = externeU, read = read,archiveU = archiveU , typeU = typeU)
         else:
             return redirect(url_for('login'))   
         
@@ -1159,10 +1165,14 @@ def listeAr():
 
         ## Liste des archive avec 
             lst = sql.cursor()
-            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,   strftime('%d', dateA) - strftime('%d', date('now'))  from archives inner join configurations on archives.configurationA = configurations.idConfiguration  order by idArchive desc")
             lstU = lst.fetchall()
 
-        return render_template('employees.html' , userL = userL,lstU = lstU , lectureUser = lectureUser , read = read ,create = create ,archiveU = archiveU ,typeU = typeU ,listeAU = listeAU ,externeU = externeU) 
+            # lst = sql.cursor()
+            # lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            # lstU = lst.fetchall()
+
+        return render_template('listeAr.html' , userL = userL,lstU = lstU , lectureUser = lectureUser , read = read ,create = create ,archiveU = archiveU ,typeU = typeU ,listeAU = listeAU ,externeU = externeU) 
     else:
         return redirect(url_for('login'))                         
 
@@ -1174,8 +1184,12 @@ def data():
         with sqlite3.connect("archivage.db") as sql :
         ## Liste des archives
             lst = sql.cursor()
-            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA  from archives inner join configurations on archives.configurationA = configurations.idConfiguration  order by idArchive desc")
             lstU = lst.fetchall()
+
+            # lst = sql.cursor()
+            # lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            # lstU = lst.fetchall()
 
          #### permission des voir les utilisateurs
             id = session['id']
@@ -1220,8 +1234,13 @@ def data():
 
         ## Liste des archive avec 
             lst = sql.cursor()
-            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) , dure - datediff(now(),dateA)  from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA   from archives inner join configurations on archives.configurationA = configurations.idConfiguration  order by idArchive desc")
             lstU = lst.fetchall()
+
+            # lst = sql.cursor()
+            # lst.execute("select idArchive,titreA,archiveA,indexA,referenceA,auteurA,libConfiguration,dure,choix,natureA,notificationA,dateA ,datediff(now(),dateA) , dure - datediff(now(),dateA)  from archives inner join configurations on archives.configurationA = configurations.idConfiguration where dure >= datediff(now(),dateA) order by idArchive desc")
+            # lstU = lst.fetchall()
+
         return render_template('data/export-table.html', userL = userL,lstU = lstU , lectureUser = lectureUser , read = read ,create = create ,archiveU = archiveU ,typeU = typeU ,listeAU = listeAU ,externeU = externeU)
     else:
         return redirect(url_for('login'))    
