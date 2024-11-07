@@ -1315,7 +1315,13 @@ def data():
     else:
         return redirect(url_for('login'))    
 
-
+#
+#
+# MODIFICATION DE L'UTILISATEUR PAR L'ADMIN 
+@app.route("/userModify/<string:idUser>", methods = ['GET','POST'])
+def userModify(idUser):
+    if 'okay' in session:
+        pass
 
 
 ## Boucle 
