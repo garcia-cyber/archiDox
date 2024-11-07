@@ -1320,8 +1320,93 @@ def data():
 # MODIFICATION DE L'UTILISATEUR PAR L'ADMIN 
 @app.route("/userModify/<string:idUser>", methods = ['GET','POST'])
 def userModify(idUser):
-    if 'okay' in session:
-        pass
+    if request.method == 'POST':
+        name = request.form.get('name')
+        phone = request.form.get('phone') 
+
+        with sqlite3.connect('archivage.db') as sql:
+            cur = sql.cursor()
+            cur.execute("update users set username = ? , phoneUser = ? where idUser = ?",[name,phone,idUser])
+            sql.commit() 
+            #flash("Information Modifier !!!!")
+            cur.close()
+            return redirect('/users')
+    with sqlite3.connect('archivage.db') as sql:
+        if 'okay' in session:
+        #### permission des voir les utilisateurs 
+    
+
+            id = session['id'] 
+
+            user = sql.cursor()
+            user.execute("select * from roles where userId = ? and permissionId = 8 ",[id])
+            userL = user.fetchall()
+
+            ecrit = sql.cursor()
+            ecrit.execute("select * from roles where userId = ? and permissionId = 2 ",[id])
+            read = ecrit.fetchall()
+
+            ## creation permission
+            creation = sql.cursor()
+            creation.execute("select * from roles where userId =? and permissionId = 3  ",[id])
+            create = creation.fetchall()
+
+            ### Permission lecture 
+            lecture = sql.cursor()
+            lecture.execute("select * from roles where userId = ? and permissionId = 1",[id])
+            lectureUser = lecture.fetchall()
+
+            ####Permission d'archive et lecture
+            id = session['id']
+            archive = sql.cursor()
+            archive.execute("select * from roles where userId = ? and permissionId = 5 ",[id])
+            archiveU = archive.fetchall()
+
+            ### Permission type d'archive
+            typeA = sql.cursor()
+            typeA.execute('select * from roles where userId = {0} and permissionId = 12'.format(id))
+            typeU = typeA.fetchall()
+
+            ## Permission liste archives 
+            listeA = sql.cursor()
+            listeA.execute("select * from roles where userId = {0} and permissionId = 14".format(id))
+            listeAU = listeA.fetchall()
+
+            ## Permission archivage externe
+            externe = sql.cursor()
+            externe.execute('select * from roles where userId = {0} and permissionId = 13'.format(id))
+            externeU = externe.fetchall()
+
+            ##Nombre des archive externe
+            ext = sql.cursor()
+            ext.execute("select * from archives where natureA = 'externe' ")
+            extA = ext.fetchall()
+
+            ## Nombre des archives interne 
+            ari = sql.cursor()
+            ari.execute("select * from archives where natureA = 'interne' ")
+            ariA = ari.fetchall()
+
+            #nombre utilisateurs
+            userN = sql.cursor()
+            userN.execute("select * from users")
+            userNr = userN.fetchall() 
+            
+
+            #Totale archives 
+            tt = sql.cursor()
+            tt.execute('select * from archives')
+            ttA = tt.fetchall()
+
+            ## affichage d'utilisateur 
+            md = sql.cursor()
+            md.execute("select * from users where idUser = ?",[idUser])
+            dataMd  = md.fetchone()
+
+
+            return render_template('userModify.html',dataMd = dataMd,userNr = userN.rowcount ,ttA = tt.rowcount,ariA = ari.rowcount ,extA = ext.rowcount ,a = session['okay'] , listeAU = listeAU ,userL = userL , lectureUser = lectureUser ,externeU = externeU, read = read,archiveU = archiveU , typeU = typeU)
+    
+        
 
 
 ## Boucle 
